@@ -1,0 +1,20 @@
+{
+  "name": "views",
+  "version": "0.0.1",
+  "description": "Template engine for views in Lime Field applications.",
+  "author": "Lime Field engineering. Lundalogik AB.",
+  "homepage": "https://github.com/remotex/views",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:remotex/views.git"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "engines": {
+    "node": ">=6.10.2"
+  },
+  "dependencies": {
+    "jade": "~1.11.0",
+  },
+  "devDependencies": {}
+}
