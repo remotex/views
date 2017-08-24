@@ -8,13 +8,14 @@
     "type": "git",
     "url": "git@github.com:remotex/views.git"
   },
-  "main": "index.js",
+  "main": "./index",
   "scripts": {},
   "engines": {
     "node": ">=6.10.2"
   },
   "dependencies": {
-    "jade": "~1.11.0"
+    "jade": "~1.11.0",
+    "debug": "~3.0.0"
   },
   "devDependencies": {}
 }
