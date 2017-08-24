@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const fs = require('fs');
 const jade = require('jade');
 
 const defaults = {
@@ -20,13 +19,13 @@ class Views {
     try {
       data = JSON.parse(file.data);
       name = data.template || path.parse(file.path).name;
-      template = fs.readFileSync(path.join(`${this.config.path}`, `${name}.${this.config.ext}`), 'utf-8');
+      template = path.join(`${this.config.path}`, `${name}.${this.config.ext}`);
     }
     catch (error) {
       return Promise.reject(`${error}`);
     }
 
-    return Promise.resolve('module.exports = ' + JSON.stringify(jade.render(template, data.definitions)) + ';');
+    return Promise.resolve('module.exports = ' + JSON.stringify(jade.renderFile(template, data.definitions)) + ';');
   }
 }
 
