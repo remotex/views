@@ -2,7 +2,7 @@
 
 const path = require('path');
 const jade = require('jade');
-const debug = require('debug')('brunch:views');
+const debug = require('debug')('brunch:views-brunch');
 
 debug('here');
 console.log('here');
