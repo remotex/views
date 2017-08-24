@@ -8,13 +8,10 @@
     "type": "git",
     "url": "git@github.com:remotex/views-brunch.git"
   },
-  "scripts": {},
   "engines": {
     "node": ">=6.10.2"
   },
   "dependencies": {
-    "jade": "~1.11.0",
-    "debug": "~3.0.0"
-  },
-  "devDependencies": {}
+    "jade": "^1.11.0"
+  }
 }
