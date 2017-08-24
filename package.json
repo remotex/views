@@ -1,12 +1,12 @@
 {
-  "name": "views",
+  "name": "views-brunch",
   "version": "0.0.1",
   "description": "Template engine for views in Lime Field applications.",
   "author": "Lime Field engineering. Lundalogik AB.",
-  "homepage": "https://github.com/remotex/views",
+  "homepage": "https://github.com/remotex/views-brunch",
   "repository": {
     "type": "git",
-    "url": "git@github.com:remotex/views.git"
+    "url": "git@github.com:remotex/views-brunch.git"
   },
   "scripts": {},
   "engines": {
