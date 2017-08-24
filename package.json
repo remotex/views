@@ -8,7 +8,6 @@
     "type": "git",
     "url": "git@github.com:remotex/views.git"
   },
-  "main": "./index",
   "scripts": {},
   "engines": {
     "node": ">=6.10.2"
