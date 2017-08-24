@@ -15,11 +15,11 @@ class Views {
   }
 
   compile(file) {
-    let name, data, template;
+    let data, name, template;
 
     try {
-      name = path.parse(file.path).name;
       data = JSON.parse(file.data);
+      name = data.template || path.parse(file.path).name;
       template = fs.readFileSync(path.join(`${this.config.path}`, `${name}.${this.config.ext}`), 'utf-8');
     }
     catch (error) {
