@@ -4,33 +4,34 @@ const path = require('path');
 const jade = require('jade');
 
 const defaults = {
-  path: 'views',
+  templates: 'views',
+  definitions: /^app\/templates[\\/].*\.json$/,
   ext: 'jade'
 };
 
 class Views {
   constructor(config) {
     this.config = Object.assign({}, defaults, config.plugins.views);
+    this.pattern = this.config.definitions;
   }
 
   compile(file) {
-    let data, name, template;
+    let definitions, name, template;
 
     try {
-      data = JSON.parse(file.data);
-      name = data.template || path.parse(file.path).name;
-      template = path.join(`${this.config.path}`, `${name}.${this.config.ext}`);
+      definitions = JSON.parse(file.data);
+      name = definitions.template || path.parse(file.path).name;
+      template = path.join(`${this.config.templates}`, `${name}.${this.config.ext}`);
     }
     catch (error) {
       return Promise.reject(`${error}`);
     }
 
-    return Promise.resolve('module.exports = ' + JSON.stringify(jade.renderFile(template, data.definitions)) + ';');
+    return Promise.resolve('module.exports = ' + JSON.stringify(jade.renderFile(template, definitions)) + ';');
   }
 }
 
 Views.prototype.brunchPlugin = true;
 Views.prototype.type = 'template';
-Views.prototype.pattern = /\.json$/;
 
 module.exports = Views;
