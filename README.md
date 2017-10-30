@@ -1,4 +1,4 @@
-# views-brunch
+# jadeson-views-brunch
 
 Dynamically renders templates into html strings and makes them available in `require`.
 Takes in a template and a definition file.
