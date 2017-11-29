@@ -5,7 +5,7 @@ const jade = require('jade');
 
 const defaults = {
   templates: 'views',
-  definitions: /^app\/templates[\\/].*\.json$/,
+  definitions: /^app\/(templates|components)[\\/].*\.json$/,
   ext: 'jade'
 };
 
