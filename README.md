@@ -8,7 +8,7 @@ Takes in a template and a definition file.
   Path to folder with templates. Defaults to `'views'`
 
 `definitions` (pattern)
-  Pattern to folder with definitions files. Defaults to `/^app\/templates[\\/].*\.json$/`
+  Pattern to folder with definitions files. Defaults to `/^app\/(templates|components)[\\/].*\.json$/`
 
 `ext`
   Extension of template files. Defaults to `'jade'`
