@@ -4,8 +4,9 @@ const path = require('path');
 const engine = require('pug');
 
 const defaults = {
-  templates: 'pug',
-  pattern: /\.pug\.json$/
+  path: 'pug',
+  pattern: /\.pug\.json$/,
+  replace: /^.*(app)/
 };
 
 class Views {
@@ -14,32 +15,29 @@ class Views {
     this.pattern = this.config.pattern;
   }
 
-  compile({definitions: data, path: filepath}) {
-    let filename, template;
+  compile({data, path: filepath}) {
+    let filename;
 
     try {
-      definitions = JSON.parse(definitions);
-      filename = definitions.template ? `${definitions.template}.pug` : path.basename(filepath, '.json');
-      template = path.join(this.config.templates, path.dirname(filepath), filename);
-      console.log(template);
+      data = JSON.parse(data);
+      filename = data.template ? `${data.template}.pug` : path.basename(filepath, '.json');
+      filepath = path.join(path.dirname(filepath).replace(this.config.replace, this.config.path), filename);
+
+      return Promise.resolve(`module.exports = ${JSON.stringify(engine.renderFile(filepath, data))};`);
     }
     catch (error) {
       return Promise.reject(`${error}`);
     }
-
-    return Promise.resolve(`module.exports = ${JSON.stringify(jade.renderFile(template, definitions))};`);
   }
 
-  compileStatic({path: filepath}) {
-    // console.log(jade.renderFile(filepath));
-
-    return Promise.resolve(jade.renderFile(filepath));
+  compileStatic(file) {
+    return Promise.resolve(engine.render(file.data));
   }
 }
 
 Views.prototype.brunchPlugin = true;
 Views.prototype.type = 'template';
-Views.prototype.staticExtension = 'jade';
+Views.prototype.staticExtension = 'pug';
 Views.prototype.staticTargetExtension = 'html';
 
 module.exports = Views;
