@@ -12,17 +12,17 @@ Can have an optional property `template` (String) which holds template file name
 Any files with `.pug` extension found in `assets` directory will be compiled into `.html` files in `public` directory.
 
 ## Options
-Add options to brunch `config.plugins.views = {}`
+Overwrite default options in brunch `config.plugins.views = {}`
 
 `path` (`'pug'`)
-Path to the directory with templatesю
+Path to the directory with templates.
 
 `pattern` (`/\.pug\.json$/`)
-Pattern to definitions filesю
+Pattern to definitions files.
 
 `replace` (`/^.*(app)/`)
 Pattern to replace in file paths in order to reference the template file in templates directory.
 
 `staticLocals` (`{}`)
-Object to be used as definition for static files. Has template base file names as keys and paths to corresponding json files as values. Example: `{'index.pug': 'static/data.json'}`
+Object to be used as definitions for static files. Has template's base file names as keys and paths to corresponding json files as values. Example: `{'index.pug': 'static/data.json'}`
 
