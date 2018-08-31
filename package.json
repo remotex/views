@@ -5,6 +5,7 @@
   "author": "Lime Field by Lundalogik AB",
   "repository": "git@github.com:Lundalogik/jadeson-views-brunch.git",
   "dependencies": {
-    "pug": "2.x"
+    "pug": "2.x",
+    "jsonfile": "4.x"
   }
 }

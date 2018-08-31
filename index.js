@@ -1,12 +1,14 @@
 'use strict';
 
 const path = require('path');
+const jsonfile = require('jsonfile');
 const engine = require('pug');
 
 const defaults = {
   path: 'pug',
   pattern: /\.pug\.json$/,
-  replace: /^.*(app)/
+  replace: /^.*(app)/,
+  staticLocals: {}
 };
 
 class Views {
@@ -31,7 +33,12 @@ class Views {
   }
 
   compileStatic(file) {
-    return Promise.resolve(engine.render(file.data));
+    let locals;
+
+    locals = this.config.staticLocals[path.basename(file.path)];
+    locals = locals ? jsonfile.readFileSync(locals) : {};
+
+    return Promise.resolve(engine.render(file.data, locals));
   }
 }
 
