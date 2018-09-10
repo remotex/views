@@ -1,17 +1,11 @@
 {
   "name": "jadeson-views-brunch",
-  "version": "0.0.1",
-  "description": "Template engine for views in Lime Field applications.",
+  "version": "2.0.0",
+  "description": "HTML templates engine for Lime Field web applications",
   "author": "Lime Field by Lundalogik AB",
-  "homepage": "https://github.com/Lundalogik/jadeson-views-brunch",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Lundalogik/jadeson-views-brunch.git"
-  },
-  "engines": {
-    "node": ">=6.10.2"
-  },
+  "repository": "git@github.com:Lundalogik/jadeson-views-brunch.git",
   "dependencies": {
-    "jade": "^1.11.0"
+    "pug": "2.x",
+    "jsonfile": "4.x"
   }
 }
