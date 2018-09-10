@@ -5,7 +5,7 @@ const jsonfile = require('jsonfile');
 const engine = require('pug');
 
 const defaults = {
-  path: 'pug',
+  basedir: 'pugviews',
   pattern: /\.pug\.json$/,
   replace: /^.*(app)/,
   staticLocals: {}
@@ -13,7 +13,7 @@ const defaults = {
 
 class Views {
   constructor(config) {
-    this.config = Object.assign({}, defaults, config.plugins.views);
+    this.config = Object.assign({}, defaults, config.plugins.pugviews);
     this.pattern = this.config.pattern;
   }
 
@@ -23,9 +23,9 @@ class Views {
     try {
       data = JSON.parse(data);
       filename = data.template ? `${data.template}.pug` : path.basename(filepath, '.json');
-      filepath = path.join(path.dirname(filepath).replace(this.config.replace, this.config.path), filename);
+      filepath = path.join(path.dirname(filepath).replace(this.config.replace, this.config.basedir), filename);
 
-      return Promise.resolve(`module.exports = ${JSON.stringify(engine.renderFile(filepath, data))};`);
+      return Promise.resolve(`module.exports = ${JSON.stringify(engine.renderFile(filepath, data, this.config))};`);
     }
     catch (error) {
       return Promise.reject(`${error}`);
